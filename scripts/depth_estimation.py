@@ -15,10 +15,6 @@ from rich.console import Console
 
 CONSOLE = Console(width=120)
 
-Commands = Union[
-    Annotated[]
-
-]
 
 @dataclass
 class ProcessDepth:
@@ -82,6 +78,11 @@ class ProcessDepth:
                 ).squeeze()
             output = prediction.cpu().numpy()
             # save
+
+
+Commands = Union[
+    Annotated[ProcessDepth, tyro.conf.subcommand(name="monocular-depth")],
+]
 
 
 
